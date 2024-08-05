@@ -21,7 +21,7 @@ on:
           - Lienol-master
       #是否连接到ssh，进行一些配置？
       ssh:
-        description: 'SSH connection to Actions'
+        description: '是否ssh连接到actions，进行一些配置？true or false,默认：false'
         required: false
         default: 'false'
       
