@@ -19,6 +19,11 @@ on:
           - lede-master
           - immortalwrt-master
           - Lienol-master
+      #是否连接到ssh，进行一些配置？
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
       
 env:
   FEEDS_CONF: config/${{ inputs.source_branch }}/feeds.conf.default
@@ -136,7 +141,13 @@ jobs:
           chmod +x ${DIY_P2_SH}
           cd openwrt/
           ${GITHUB_WORKSPACE}/${DIY_P2_SH}
-
+          
+      - name: SSH 连接到 Actions
+        uses: P3TERX/ssh2actions@v1.0.0
+        if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: 下载软件包
         id: package
         run: |
