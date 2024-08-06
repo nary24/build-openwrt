@@ -120,6 +120,8 @@ jobs:
           echo -e "REPO_URL: [ ${REPO_URL} ]\nREPO_BRANCH: [ ${REPO_BRANCH} ]\nTAGS_NAME: [ ${TAGS_NAME} ]"
           df -hT ${PWD}
           echo "status=success" >> ${GITHUB_OUTPUT}
+          #个人测试
+          #echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
 
 
       #这段可删除
@@ -128,9 +130,9 @@ jobs:
         run: |
           #下面这个自己设置的，添加release显示信息
           echo " 
-          📂 源码: ${{ steps.codes.REPO_URL }}
+          📂 源码: ${{ REPO_URL }}
   
-          🌳 分支: ${{ steps.codes.REPO_BRANCH }}
+          🌳 分支: ${{ REPO_BRANCH }}
           
           ⏱️ 编译时间: $(date +"%Y年%m月%d日%H时%M分")
   
