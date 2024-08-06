@@ -35,3 +35,5 @@ sed -i 's/192.168.1.1/192.168.123.1/g' package/base-files/files/bin/config_gener
 
 #这里可以自定义添加一些其他插件,如添加openclash插件
 #svn co https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+
+#修改配置测试
