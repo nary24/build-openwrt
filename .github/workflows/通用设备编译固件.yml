@@ -121,8 +121,8 @@ jobs:
           df -hT ${PWD}
           echo "status=success" >> ${GITHUB_OUTPUT}
           #个人测试
-          echo "::set-output name=repo_url::$(REPO_URL)"
-          echo "::set-output name=repo_branch::$(REPO_BRANCH)"
+          echo "::set-output name=repo_url::${REPO_URL}"
+          echo "::set-output name=repo_branch::${REPO_BRANCH}"
 
 
       #这段可删除
