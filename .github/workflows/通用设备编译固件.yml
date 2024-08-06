@@ -120,30 +120,10 @@ jobs:
           echo -e "REPO_URL: [ ${REPO_URL} ]\nREPO_BRANCH: [ ${REPO_BRANCH} ]\nTAGS_NAME: [ ${TAGS_NAME} ]"
           df -hT ${PWD}
           echo "status=success" >> ${GITHUB_OUTPUT}
-          #个人测试
+          
+          #个人添加,添加参数给后面的release显示使用
           echo "::set-output name=repo_url::${REPO_URL}"
           echo "::set-output name=repo_branch::${REPO_BRANCH}"
-
-
-      #这段可删除
-      - name: 测试获steps数据
-        id: test
-        run: |
-          #下面这个自己设置的，添加release显示信息
-          echo " 
-          📂 源码: ${{ steps.codes.outputs.repo_url }}
-  
-          🌳 分支: ${{ steps.codes.outputs.repo_branch }}
-          
-          ⏱️ 编译时间: $(date +"%Y年%m月%d日%H时%M分")
-  
-          🌐 管理地址: 192.168.123.1
-  
-          👤 用户名: root
-  
-          🔒 密码: password 
-          "
-
 
       - name: 加载自定义 feeds
         run: |
@@ -226,9 +206,9 @@ jobs:
           
           #下面这个自己设置的，添加release显示信息
           echo " 
-          📂 源码: ${{ steps.codes.REPO_URL }}
+          📂 源码: ${{ steps.codes.outputs.repo_url }}
   
-          🌳 分支: ${{ steps.codes.REPO_BRANCH }}
+          🌳 分支: ${{ steps.codes.outputs.repo_branch }}
           
           ⏱️ 编译时间: $(date +"%Y年%m月%d日%H时%M分")
   
