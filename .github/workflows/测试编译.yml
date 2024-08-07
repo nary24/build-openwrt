@@ -209,7 +209,7 @@ jobs:
         with:
             fetch-depth: 0
             
-      - name: Run log
+      - name: Runlog
         id: log
         if: env.UPLOAD_FIRMWARE == 'true'
         run: git log >> log.log && cat log.log
@@ -231,7 +231,8 @@ jobs:
           密码: password" >> release.txt
 
           #最后的提交信息
-          echo "${{ github.event.head_commit.message }}" >> release.txt
+          #echo "${{ github.event.head_commit.message }}" >> release.txt
+          echo $(git log) >> release.txt
           
           echo "::set-output name=status::success"
 
