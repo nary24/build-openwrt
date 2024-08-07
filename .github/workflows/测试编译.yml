@@ -125,6 +125,9 @@ jobs:
           echo "::set-output name=repo_url::${REPO_URL}"
           echo "::set-output name=repo_branch::${REPO_BRANCH}"
 
+          #或通过这样传值到系统变量，可供其他steps使用，和上面的功能一样
+          #echo "status=success" >> $GITHUB_OUTPUT
+
       # - name: 加载自定义 feeds
       #   run: |
       #     [[ -f "${FEEDS_CONF}" ]] && cp -f ${FEEDS_CONF} openwrt/feeds.conf.default
