@@ -202,9 +202,11 @@ jobs:
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
         run: |
           echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
-          touch release.txt
-          
-          #下面这个自己设置的，添加release显示信息
+          touch release.txt          
+          [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
+          [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+
+          #下面这个自己设置的，添加release显示信息，有坑：不添加前release是有显示commit提交信息的，在添加以下内容后不显示，需要自行获取commit信息          
           echo " 
           📂 源码: ${{ steps.codes.outputs.repo_url }}
   
@@ -219,9 +221,12 @@ jobs:
           🔒 密码: password 
           
           " >> release.txt
-          
-          [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-          [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+
+          #最后的提交信息，自行获取commit信息
+          #echo "${{ github.event.head_commit.message }}" >> release.txt  #这行不能获取
+          echo "提交信息: "  >> release.txt
+          echo  $(git log) | awk -F "+0800" '{print $2}' >> release.txt
+
           echo "::set-output name=status::success"
 
       - name: Upload firmware to release
