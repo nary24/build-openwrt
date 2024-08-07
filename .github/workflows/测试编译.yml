@@ -211,7 +211,7 @@ jobs:
             
       - name: Run log
         id: log
-        run: git log
+        run: git log >> log.log && cat log.log
 
       - name: 生成发布release标签
         id: tag
