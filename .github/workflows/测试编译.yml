@@ -214,8 +214,7 @@ jobs:
           [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
                     
           #下面这个自己设置的，添加release显示信息,加了这个不显示commit信息，奇怪
-          echo " 
-          源码: ${{ steps.codes.outputs.repo_url }}
+          echo " 源码: ${{ steps.codes.outputs.repo_url }}
           分支: ${{ steps.codes.outputs.repo_branch }}  
           管理地址: 192.168.123.1  
           用户名: root  
