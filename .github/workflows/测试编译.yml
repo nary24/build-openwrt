@@ -204,13 +204,11 @@ jobs:
           echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
           touch release.txt
           
-          #下面这个自己设置的，添加release显示信息
+          #下面这个自己设置的，添加release显示信息,加了这个不显示commit信息，奇怪
           echo " 
           📂 源码: ${{ steps.codes.outputs.repo_url }}
   
           🌳 分支: ${{ steps.codes.outputs.repo_branch }}
-          
-          ⏱️ 编译时间: $(date +"%Y年%m月%d日%H时%M分")
   
           🌐 管理地址: 192.168.123.1
   
