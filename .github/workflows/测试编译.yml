@@ -219,6 +219,10 @@ jobs:
           管理地址: 192.168.123.1  
           用户名: root  
           密码: password" >> release.txt
+
+          #最后的提交信息
+          echo "{{github.event.head_commit.message}}" >> release.txt
+          
           echo "::set-output name=status::success"
 
       - name: Upload firmware to release
