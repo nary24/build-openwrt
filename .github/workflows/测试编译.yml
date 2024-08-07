@@ -204,6 +204,14 @@ jobs:
           name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
           path: ${{ env.FIRMWARE }}
 
+
+      - name: Run log
+        id: commit_log
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          run: git log
+
       - name: 生成发布release标签
         id: tag
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
