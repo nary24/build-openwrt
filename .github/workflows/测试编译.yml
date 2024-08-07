@@ -240,7 +240,8 @@ jobs:
 
           #最后的提交信息
           #echo "${{ github.event.head_commit.message }}" >> release.txt  #这行不能获取
-          echo -e "\n提交信息: $(git log) | awk -F "+0800" '{print $2}' ">> release.txt
+          echo "提交信息: "  >> release.txt
+          echo  $(git log) | awk -F "+0800" '{print $2}' >> release.txt
           
           echo "::set-output name=status::success"
 
