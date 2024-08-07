@@ -211,6 +211,7 @@ jobs:
             
       - name: Run log
         id: log
+        if: env.UPLOAD_FIRMWARE == 'true'
         run: git log >> log.log && cat log.log
 
       - name: 生成发布release标签
