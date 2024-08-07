@@ -232,7 +232,7 @@ jobs:
 
           #最后的提交信息
           #echo "${{ github.event.head_commit.message }}" >> release.txt
-          echo $(git log) >> release.txt
+          echo $(git log) | awk -F "+0800" '{print $2}' >> release.txt
           
           echo "::set-output name=status::success"
 
