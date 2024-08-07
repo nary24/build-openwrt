@@ -39,6 +39,10 @@ env:
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
+  #在后面的节点上，也可以把参数写到$GITHUB_ENV,实现全局变量。 使用${{env.FIRMWARE}}获取值
+  #echo "FIRMWARE=test" >> $GITHUB_ENV
+
+
 jobs:
   build:
     runs-on: ubuntu-22.04
