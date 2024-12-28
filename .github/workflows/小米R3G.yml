@@ -26,13 +26,13 @@ on:
         default: 'false'
       
 env:
-  FEEDS_CONF: config/${{ inputs.source_branch }}/小米R3G/feeds.conf.default
+  FEEDS_CONF: config/${{ inputs.source_branch }}/MI-R3G/feeds.conf.default
   
   #与make menuconfig生成的对应的.config文件相同
-  CONFIG_FILE: config/${{ inputs.source_branch }}/小米R3G/.config
+  CONFIG_FILE: config/${{ inputs.source_branch }}/MI-R3G/.config
   #自定义的插件包配置+自定义配置IP地址等配置
-  DIY_P1_SH: config/${{ inputs.source_branch }}/小米R3G/diy-part1.sh
-  DIY_P2_SH: config/${{ inputs.source_branch }}/小米R3G/diy-part2.sh
+  DIY_P1_SH: config/${{ inputs.source_branch }}/MI-R3G/diy-part1.sh
+  DIY_P2_SH: config/${{ inputs.source_branch }}/MI-R3G/diy-part2.sh
   
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
